@@ -3,17 +3,14 @@ import requests
 import json
 import time
 
-# --- 🎨 Configuração e Estilo GOCASE REVISADO ---
-COLOR_GOCASE_PRIMARY = "#005CAA"   # Azul GOCASE Vibrante
-COLOR_GOCASE_SECONDARY = "#FCFFFC" # Branco Suave / Off-White (Para texto em contraste)
-COLOR_GOCASE_BACKGROUND = "#1E1E1E" # Fundo Escuro (Usado no tema geral)
-COLOR_GOCASE_TEXT = "#FCFFFC"      # Texto Off-White
-COLOR_GOCASE_DARK_CARD = "#333333" # Fundo das Mensagens do Bot
+COLOR_GOCASE_PRIMARY = "#005CAA"   
+COLOR_GOCASE_SECONDARY = "#FCFFFC" 
+COLOR_GOCASE_BACKGROUND = "#1E1E1E" 
+COLOR_GOCASE_TEXT = "#FCFFFC"      
+COLOR_GOCASE_DARK_CARD = "#333333" 
 
-# URL da Logo Fornecida
 LOGO_URL = "https://i.ibb.co/KxJXrfb0/gocase-brasil-square-Logo-1706732705121.webp"
 
-# URLs dos Ícones (ATUALIZADO)
 ICON_GITHUB_URL = "https://i.ibb.co/TBp0mSbj/github-mark-white.png"
 ICON_LINKEDIN_URL = "https://i.ibb.co/kVCHNDF2/Linked-In-icon-svg.png" 
 
@@ -126,8 +123,7 @@ def set_gocase_theme():
         </style>
     """, unsafe_allow_html=True)
 
-# --- 🤖 Função de Integração n8n ---
-# CORRIGIDO: Usando a URL de PRODUÇÃO (sem "-test")
+# --- Função de Integração n8n ---
 N8N_WEBHOOK_URL = "https://webhook-dev.hostweb.com.br/webhook/665fe20a-b0c4-42fc-a8e0-78a07ef8f9d8" 
 
 def call_n8n_chatbot(prompt: str) -> str:
@@ -156,8 +152,6 @@ def call_n8n_chatbot(prompt: str) -> str:
         # A mensagem de erro sugere verificar se o n8n está ativo e a URL correta
         return "Desculpe, falha na conexão com o servidor de automação (n8n). Verifique se o fluxo está **ATIVO** (URL de produção)."
 
-
-# --- 🚀 Lógica da Aplicação Streamlit ---
 
 # 1. Aplica o tema
 set_gocase_theme()
@@ -232,7 +226,6 @@ st.chat_input(
 )
 
 
-# 7. Lógica de Chamada do n8n (Executada durante a re-execução)
 # Verifica se a última mensagem foi do usuário E se ainda não foi respondida
 if len(st.session_state.messages) > 0 and st.session_state.messages[-1]["role"] == "user":
     
